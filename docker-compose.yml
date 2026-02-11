@@ -1,9 +1,16 @@
 version: "3.9"
 services:
   app:
-    image: cypherpunkx/myapp:latest # Ganti di sini
+    image: cypherpunkx/myapp:latest
     container_name: myapp
     ports:
       - "3001:3000"
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - NODE_ENV=production
+      - WATCHTOWER_CLEANUP=true # hapus image lama otomatis
+      - WATCHTOWER_POLL_INTERVAL=30 # cek setiap 30 detik

@@ -1,1 +1,3 @@
 test hard reset
+
+test hard reset 2
